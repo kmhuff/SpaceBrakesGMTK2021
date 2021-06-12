@@ -14,5 +14,5 @@ func _ready():
 
 
 func _process(_delta):
-	if Input.is_action_pressed("tractor_beam"):
+	if Input.is_action_just_pressed("tractor_beam"):
 		queue_free()
