@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Components/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/playerShip3_blue.png" type="Texture" id=2]
 [ext_resource path="res://Assets/playerShip3_green.png" type="Texture" id=3]
 [ext_resource path="res://Assets/walls.tres" type="TileSet" id=4]
+[ext_resource path="res://Components/TractorBeam.tscn" type="PackedScene" id=5]
 
 [node name="Level1" type="Node2D"]
 
@@ -24,3 +25,7 @@ cell_size = Vector2( 32, 32 )
 collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 458771, 0, 0 )
+
+[node name="TractorBeam" parent="." instance=ExtResource( 5 )]
+ship1_path = NodePath("../BlueShip")
+ship2_path = NodePath("../GreenShip")
