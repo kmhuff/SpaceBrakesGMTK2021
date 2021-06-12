@@ -9,6 +9,7 @@
 [node name="BlueShip" parent="." instance=ExtResource( 1 )]
 position = Vector2( 251.233, 290.433 )
 ship_texture = ExtResource( 2 )
+brake_input = "blue_space_brakes"
 
 [node name="GreenShip" parent="." instance=ExtResource( 1 )]
 position = Vector2( 497.122, 131.853 )
