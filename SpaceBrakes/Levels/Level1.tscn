@@ -9,14 +9,18 @@
 
 [node name="BlueShip" parent="." instance=ExtResource( 1 )]
 position = Vector2( 251.233, 290.433 )
+collision_layer = 0
 ship_texture = ExtResource( 2 )
 brake_input = "blue_space_brakes"
 
 [node name="GreenShip" parent="." instance=ExtResource( 1 )]
 position = Vector2( 497.122, 131.853 )
+collision_layer = 0
 ship_texture = ExtResource( 3 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
 collision_mask = 0
 format = 1
+tile_data = PoolIntArray( 458771, 0, 0 )
