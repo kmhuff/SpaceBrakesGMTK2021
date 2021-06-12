@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Components/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/playerShip3_blue.png" type="Texture" id=2]
 [ext_resource path="res://Assets/playerShip3_green.png" type="Texture" id=3]
+[ext_resource path="res://Assets/walls.tres" type="TileSet" id=4]
 
 [node name="Level1" type="Node2D"]
 
@@ -14,3 +15,8 @@ brake_input = "blue_space_brakes"
 [node name="GreenShip" parent="." instance=ExtResource( 1 )]
 position = Vector2( 497.122, 131.853 )
 ship_texture = ExtResource( 3 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+collision_mask = 0
+format = 1
