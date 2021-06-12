@@ -9,6 +9,8 @@ radius = 39.215
 
 [node name="Ship" type="RigidBody2D"]
 gravity_scale = 0.0
+contacts_reported = 3
+contact_monitor = true
 linear_damp = 0.0
 script = ExtResource( 2 )
 initial_angle_deg = 45
@@ -24,3 +26,5 @@ shape = SubResource( 1 )
 visible = false
 modulate = Color( 0.811765, 0.482353, 1, 1 )
 texture = ExtResource( 3 )
+
+[connection signal="body_entered" from="." to="." method="_on_Ship_body_entered"]

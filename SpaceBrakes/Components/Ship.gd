@@ -34,3 +34,8 @@ func _integrate_forces(state):
 		shield_sprite.visible = false
 		mass = mass / BRAKE_MAG
 		state.linear_velocity = state.linear_velocity * BRAKE_MAG
+
+
+func _on_Ship_body_entered(_body):
+	print('Hit!')
+	get_tree().reload_current_scene()
