@@ -50,43 +50,43 @@ shader_param/whiteness = 0.146949
 [node name="Level1" type="Node2D"]
 
 [node name="GreenGoal" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1182.28, 203.647 )
+position = Vector2( 1216, 224 )
 
 [node name="ColorRect" parent="GreenGoal" index="1"]
 material = SubResource( 2 )
-margin_left = -66.0
-margin_top = -173.0
-margin_right = 65.0
-margin_bottom = 172.0
+margin_left = -64.0
+margin_top = -160.0
+margin_right = 64.0
+margin_bottom = 160.0
 
 [node name="BlueGoal" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1180.87, 550.129 )
+position = Vector2( 1216, 544 )
 collision_mask = 2
 
 [node name="ColorRect" parent="BlueGoal" index="1"]
 material = SubResource( 4 )
-margin_left = -62.0
-margin_top = -175.0
-margin_right = 65.0
-margin_bottom = 167.0
+margin_left = -64.0
+margin_top = -160.0
+margin_right = 64.0
+margin_bottom = 160.0
 color = Color( 0.215686, 0.666667, 0.788235, 1 )
 
 [node name="TractorBeam" parent="." instance=ExtResource( 5 )]
 ship1_path = NodePath("../BlueShip")
 ship2_path = NodePath("../GreenShip")
 
+[node name="GreenShip" parent="." instance=ExtResource( 1 )]
+position = Vector2( 250, 224 )
+collision_layer = 4
+initial_angle_deg = 0
+ship_texture = ExtResource( 3 )
+
 [node name="BlueShip" parent="." instance=ExtResource( 1 )]
-position = Vector2( 250, 479.304 )
+position = Vector2( 250, 544 )
 collision_layer = 2
 initial_angle_deg = 0
 ship_texture = ExtResource( 2 )
 brake_input = "blue_space_brakes"
-
-[node name="GreenShip" parent="." instance=ExtResource( 1 )]
-position = Vector2( 250, 185.307 )
-collision_layer = 4
-initial_angle_deg = 0
-ship_texture = ExtResource( 3 )
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
