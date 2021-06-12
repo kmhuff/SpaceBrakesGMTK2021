@@ -2,7 +2,7 @@ extends CanvasLayer
 
 
 export var title = "title goes here"
-export var text = "Lorem Ipsum"
+export (String, MULTILINE) var text = "Lorem Ipsum"
 
 onready var title_label = $MarginContainer/VBoxContainer/Title
 onready var text_label = $MarginContainer/VBoxContainer/Text
