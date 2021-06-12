@@ -13,6 +13,10 @@ config_version=4
 config/name="SpaceBrakes"
 run/main_scene="res://Levels/Level1.tscn"
 
+[autoload]
+
+BackgroundMusic="*res://Components/BackgroundMusic.tscn"
+
 [display]
 
 window/size/width=1280
