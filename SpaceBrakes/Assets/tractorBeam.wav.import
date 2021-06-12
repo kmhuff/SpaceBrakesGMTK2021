@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/tractorBeam.wav-39cd5b8d7b8ba35080342923611044b1.sample"
+
+[deps]
+
+source_file="res://Assets/tractorBeam.wav"
+dest_files=[ "res://.import/tractorBeam.wav-39cd5b8d7b8ba35080342923611044b1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

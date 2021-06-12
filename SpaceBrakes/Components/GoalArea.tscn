@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 67.7976, 172.447 )
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=11]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
 
@@ -19,9 +19,9 @@ void fragment() {
 	COLOR = mix(new_color, vec4(1.0, 1.0, 1.0, opacity), whiteness);
 }"
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=12]
 resource_local_to_scene = true
-shader = SubResource( 2 )
+shader = SubResource( 11 )
 shader_param/opacity = 1.0
 shader_param/whiteness = 0.0
 
@@ -67,7 +67,7 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource( 3 )
+material = SubResource( 12 )
 margin_right = 40.0
 margin_bottom = 40.0
 color = Color( 0.443137, 0.788235, 0.215686, 1 )

@@ -20,7 +20,7 @@ BackgroundMusic="*res://Components/BackgroundMusic.tscn"
 [display]
 
 window/size/width=1280
-window/size/height=720
+window/size/height=736
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
