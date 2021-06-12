@@ -32,6 +32,7 @@ func _process(_delta):
 
 func _integrate_forces(state):
 	if Input.is_action_just_pressed(brake_input):
+		$BrakeSound.play()
 		shield_sprite.visible = true
 		mass = mass * BRAKE_MAG
 		state.linear_velocity = state.linear_velocity / sqrt(BRAKE_MAG)
@@ -51,8 +52,8 @@ func _integrate_forces(state):
 
 
 func _on_Ship_body_entered(_body):
-	print('Hit!')
-# warning-ignore:return_value_discarded
+	$DeathSound.play()
+	yield(get_tree().create_timer(2.0), "timeout")
 	get_tree().reload_current_scene()
 
 

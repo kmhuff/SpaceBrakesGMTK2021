@@ -13,6 +13,8 @@ onready var ship2 = get_node(ship2_path)
 
 func _process(_delta):
 	if Input.is_action_pressed("tractor_beam"):
+		if !$TractorBeamSound.playing:
+			$TractorBeamSound.play()
 		var distance = ship1.global_position.distance_to(ship2.global_position)
 		
 		global_position = ship1.global_position
@@ -24,6 +26,7 @@ func _process(_delta):
 		ship2.set_tractor_force(ship1.global_position - ship2.global_position, BEAM_FORCE / distance)
 	
 	if Input.is_action_just_released("tractor_beam"):
+		$TractorBeamSound.stop()
 		texture.visible = false
 		
 		ship1.set_tractor_force(Vector2.ZERO, 0)
