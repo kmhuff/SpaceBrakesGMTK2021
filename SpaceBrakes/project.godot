@@ -42,6 +42,12 @@ tractor_beam={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="BlueShip"
+2d_physics/layer_3="GreenShip"
+
 [physics]
 
 common/enable_pause_aware_picking=true
