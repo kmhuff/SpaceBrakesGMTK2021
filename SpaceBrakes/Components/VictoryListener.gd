@@ -17,7 +17,7 @@ func _process(_delta):
 		if next_scene:
 			window.text = "Proceed to the next simulation."
 		else:
-			window.text = "You have achieved victory."
+			window.text = "You have completed the training program. Good luck in your future endeavours, cadet."
 		add_child(window)
 		window.connect("tree_exiting", self, "_on_Window_exited")
 		window_created = true

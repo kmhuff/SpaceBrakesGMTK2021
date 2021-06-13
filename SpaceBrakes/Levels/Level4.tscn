@@ -11,11 +11,11 @@
 [ext_resource path="res://Levels/Level5.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Components/background.tscn" type="PackedScene" id=10]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=7]
 resource_local_to_scene = true
-extents = Vector2( 160, 64 )
+extents = Vector2( 64, 160 )
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=8]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
 
@@ -28,15 +28,15 @@ void fragment() {
 	COLOR = mix(new_color, vec4(1.0, 1.0, 1.0, opacity), whiteness);
 }"
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=9]
 resource_local_to_scene = true
-shader = SubResource( 2 )
+shader = SubResource( 8 )
 shader_param/opacity = 1.0
 shader_param/whiteness = 0.146949
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=10]
 resource_local_to_scene = true
-extents = Vector2( 64, 160 )
+extents = Vector2( 160, 64 )
 
 [sub_resource type="Shader" id=5]
 resource_local_to_scene = true
@@ -62,49 +62,49 @@ shader_param/whiteness = 0.146949
 [node name="background" parent="." instance=ExtResource( 10 )]
 
 [node name="GreenGoal" parent="." instance=ExtResource( 6 )]
-position = Vector2( 992, 128 )
+position = Vector2( 1216, 352 )
 
 [node name="CollisionShape2D" parent="GreenGoal" index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 7 )
 
 [node name="ColorRect" parent="GreenGoal" index="1"]
-material = SubResource( 3 )
-margin_left = -160.0
-margin_top = -64.0
-margin_right = 160.0
-margin_bottom = 64.0
-
-[node name="BlueGoal" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1216, 352 )
-collision_mask = 2
-
-[node name="CollisionShape2D" parent="BlueGoal" index="0"]
-shape = SubResource( 4 )
-
-[node name="ColorRect" parent="BlueGoal" index="1"]
-material = SubResource( 6 )
+material = SubResource( 9 )
 margin_left = -64.0
 margin_top = -160.0
 margin_right = 64.0
 margin_bottom = 160.0
+
+[node name="BlueGoal" parent="." instance=ExtResource( 6 )]
+position = Vector2( 992, 128 )
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="BlueGoal" index="0"]
+shape = SubResource( 10 )
+
+[node name="ColorRect" parent="BlueGoal" index="1"]
+material = SubResource( 6 )
+margin_left = -160.0
+margin_top = -64.0
+margin_right = 160.0
+margin_bottom = 64.0
 color = Color( 0.215686, 0.666667, 0.788235, 1 )
 
 [node name="TractorBeam" parent="." instance=ExtResource( 5 )]
 ship1_path = NodePath("../BlueShip")
 ship2_path = NodePath("../GreenShip")
 
-[node name="BlueShip" parent="." instance=ExtResource( 1 )]
+[node name="GreenShip" parent="." instance=ExtResource( 1 )]
 position = Vector2( 192, 288 )
+collision_layer = 4
+initial_angle_deg = 0
+ship_texture = ExtResource( 3 )
+
+[node name="BlueShip" parent="." instance=ExtResource( 1 )]
+position = Vector2( 192, 608 )
 collision_layer = 2
 initial_angle_deg = 0
 ship_texture = ExtResource( 2 )
 brake_input = "blue_space_brakes"
-
-[node name="GreenShip" parent="." instance=ExtResource( 1 )]
-position = Vector2( 192, 608 )
-collision_layer = 4
-initial_angle_deg = 0
-ship_texture = ExtResource( 3 )
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
@@ -112,7 +112,7 @@ tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 12, 0, 65537, 13, 0, 65538, 14, 0, 65538, 15, 0, 65538, 16, 0, 65538, 17, 0, 65538, 18, 0, 65537, 65548, 0, 196612, 65554, 0, 196612, 131072, 0, 65537, 131073, 0, 65538, 131074, 0, 65538, 131075, 0, 65538, 131076, 0, 65538, 131077, 0, 65538, 131078, 0, 65538, 131079, 0, 65538, 131080, 0, 65538, 131081, 0, 65538, 131082, 0, 65538, 131083, 0, 65538, 131084, 0, 65537, 131090, 0, 65537, 131091, 0, 65538, 131092, 0, 65537, 196608, 0, 196612, 196628, 0, 196612, 262144, 0, 196612, 262164, 0, 196612, 327680, 0, 196612, 327700, 0, 196612, 393216, 0, 65537, 393217, 0, 4, 393218, 0, 4, 393219, 0, 3, 393220, 0, 3, 393221, 0, 3, 393222, 0, 4, 393223, 0, 3, 393224, 0, 4, 393225, 0, 3, 393226, 0, 3, 393227, 0, 5, 393236, 0, 196612, 458752, 0, 65537, 458753, 0, 262146, 458754, 0, 262146, 458755, 0, 262146, 458756, 0, 262145, 458757, 0, 262146, 458758, 0, 262145, 458759, 0, 262146, 458760, 0, 262145, 458761, 0, 262145, 458762, 0, 262145, 458763, 0, 262147, 458772, 0, 196612, 524288, 0, 196612, 524306, 0, 65537, 524307, 0, 65538, 524308, 0, 65537, 589824, 0, 196612, 589842, 0, 196612, 655360, 0, 196612, 655378, 0, 196612, 720896, 0, 262144, 720897, 0, 65538, 720898, 0, 65538, 720899, 0, 65538, 720900, 0, 65538, 720901, 0, 65538, 720902, 0, 65538, 720903, 0, 65538, 720904, 0, 65538, 720905, 0, 65538, 720906, 0, 65538, 720907, 0, 65538, 720908, 0, 65538, 720909, 0, 65538, 720910, 0, 65538, 720911, 0, 65538, 720912, 0, 65538, 720913, 0, 65538, 720914, 0, 65537 )
+tile_data = PoolIntArray( 12, 0, 2, 13, 0, 65538, 14, 0, 65538, 15, 0, 65538, 16, 0, 65538, 17, 0, 65538, 18, 0, 5, 65548, 0, 196612, 65554, 0, 196612, 131072, 0, 2, 131073, 0, 65538, 131074, 0, 65538, 131075, 0, 65538, 131076, 0, 65538, 131077, 0, 65538, 131078, 0, 65538, 131079, 0, 65538, 131080, 0, 65538, 131081, 0, 65538, 131082, 0, 65538, 131083, 0, 65538, 131084, 0, 262147, 131090, 0, 262144, 131091, 0, 65538, 131092, 0, 5, 196608, 0, 196612, 196628, 0, 196612, 262144, 0, 196612, 262164, 0, 196612, 327680, 0, 196612, 327700, 0, 196612, 393216, 0, 65537, 393217, 0, 3, 393218, 0, 4, 393219, 0, 3, 393220, 0, 3, 393221, 0, 3, 393222, 0, 4, 393223, 0, 3, 393224, 0, 4, 393225, 0, 3, 393226, 0, 3, 393227, 0, 5, 393236, 0, 196612, 458752, 0, 65537, 458753, 0, 262146, 458754, 0, 262146, 458755, 0, 262146, 458756, 0, 262145, 458757, 0, 262146, 458758, 0, 262145, 458759, 0, 262146, 458760, 0, 262145, 458761, 0, 262145, 458762, 0, 262145, 458763, 0, 262147, 458772, 0, 196612, 524288, 0, 196612, 524306, 0, 2, 524307, 0, 65538, 524308, 0, 262147, 589824, 0, 196612, 589842, 0, 196612, 655360, 0, 196612, 655378, 0, 196612, 720896, 0, 262144, 720897, 0, 65538, 720898, 0, 65538, 720899, 0, 65538, 720900, 0, 65538, 720901, 0, 65538, 720902, 0, 65538, 720903, 0, 65538, 720904, 0, 65538, 720905, 0, 65538, 720906, 0, 65538, 720907, 0, 65538, 720908, 0, 65538, 720909, 0, 65538, 720910, 0, 65538, 720911, 0, 65538, 720912, 0, 65538, 720913, 0, 65538, 720914, 0, 262147 )
 
 [node name="VictoryListener" parent="." instance=ExtResource( 7 )]
 next_scene = ExtResource( 9 )
@@ -123,9 +123,9 @@ text = "Combining the use of tractor beam and space brakes can be used to change
 
 [connection signal="entered_goal" from="GreenGoal" to="VictoryListener" method="_on_GreenGoal_entered_goal"]
 [connection signal="entered_goal" from="BlueGoal" to="VictoryListener" method="_on_BlueGoal_entered_goal"]
-[connection signal="tree_exiting" from="DialogWindow" to="TractorBeam" method="enable_input"]
 [connection signal="tree_exiting" from="DialogWindow" to="GreenShip" method="enable_input"]
 [connection signal="tree_exiting" from="DialogWindow" to="BlueShip" method="enable_input"]
+[connection signal="tree_exiting" from="DialogWindow" to="TractorBeam" method="enable_input"]
 
 [editable path="GreenGoal"]
 [editable path="BlueGoal"]
