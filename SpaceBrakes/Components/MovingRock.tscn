@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://walls.tres" type="TileSet" id=1]
+[ext_resource path="res://Components/MovingRock.gd" type="Script" id=2]
+
+[node name="MovingRock" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 2, 1, 0, 5, 65536, 0, 196608, 65537, 0, 196611, 131072, 0, 196608, 131073, 0, 196611, 196608, 0, 262144, 196609, 0, 262147 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

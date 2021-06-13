@@ -23,7 +23,9 @@ func _physics_process(_delta):
 
 
 func _on_GoalArea_body_entered(body):
-	$WinSound.play()
-	animation_player.play("Touched")
-	captured_ship = body
-	emit_signal("entered_goal")
+	if not body.dying:
+		$WinSound.play()
+		animation_player.play("Touched")
+		captured_ship = body
+		emit_signal("entered_goal")
+

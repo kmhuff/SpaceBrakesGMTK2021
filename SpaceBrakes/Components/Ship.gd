@@ -14,6 +14,7 @@ var tractor_force_magnitude = 0
 var braking = false
 var in_goal = false
 var input_enabled = false
+var dying = false
 
 onready var sprite = $Sprite
 onready var shield_sprite = $ShieldSprite
@@ -34,7 +35,7 @@ func _integrate_forces(state):
 		$BrakeSound.play()
 		shield_sprite.visible = true
 		mass = mass * BRAKE_MAG
-		state.linear_velocity = state.linear_velocity / sqrt(BRAKE_MAG)
+		state.linear_velocity = state.linear_velocity / BRAKE_MAG
 		braking = true
 	
 	applied_force = Vector2(tractor_force_magnitude * tractor_force_direction.x, 
@@ -46,12 +47,13 @@ func _integrate_forces(state):
 	if Input.is_action_just_released(brake_input) and braking and input_enabled:
 		shield_sprite.visible = false
 		mass = mass / BRAKE_MAG
-		state.linear_velocity = state.linear_velocity * sqrt(BRAKE_MAG)
+		state.linear_velocity = state.linear_velocity * BRAKE_MAG
 		braking = false
 
 
 func _on_Ship_body_entered(_body):
 	$DeathSound.play()
+	dying = true
 	yield(get_tree().create_timer(2.0), "timeout")
 # warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()

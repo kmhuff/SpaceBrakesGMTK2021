@@ -8,7 +8,7 @@
 [ext_resource path="res://Components/GoalArea.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/VictoryListener.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/DialogWindow.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Levels/Level3.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Components/MovingRock.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Shader" id=1]
 resource_local_to_scene = true
@@ -48,7 +48,7 @@ shader = SubResource( 3 )
 shader_param/opacity = 1.0
 shader_param/whiteness = 0.146949
 
-[node name="Level1" type="Node2D"]
+[node name="Level3" type="Node2D"]
 
 [node name="GreenGoal" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1216, 544 )
@@ -89,6 +89,16 @@ initial_angle_deg = 0
 ship_texture = ExtResource( 2 )
 brake_input = "blue_space_brakes"
 
+[node name="TopPos" type="Position2D" parent="."]
+position = Vector2( 448, 64 )
+
+[node name="BotPos" type="Position2D" parent="."]
+position = Vector2( 448, 448 )
+
+[node name="MovingRock" parent="." instance=ExtResource( 9 )]
+top_pos_path = NodePath("../TopPos")
+bot_pos_path = NodePath("../BotPos")
+
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
 tile_set = ExtResource( 4 )
@@ -98,19 +108,20 @@ format = 1
 tile_data = PoolIntArray( 0, 0, 2, 1, 0, 65538, 2, 0, 65538, 3, 0, 65538, 4, 0, 65538, 5, 0, 65538, 6, 0, 65538, 7, 0, 65538, 8, 0, 65538, 9, 0, 65538, 10, 0, 65538, 11, 0, 65538, 12, 0, 65538, 13, 0, 65538, 14, 0, 65538, 15, 0, 65538, 16, 0, 65538, 17, 0, 65538, 18, 0, 65538, 19, 0, 65538, 20, 0, 5, 65536, 0, 196612, 65556, 0, 196612, 131072, 0, 196612, 131092, 0, 196612, 196608, 0, 196612, 196628, 0, 196612, 262144, 0, 196612, 262164, 0, 196612, 327680, 0, 196612, 327700, 0, 196612, 393216, 0, 196612, 393236, 0, 196612, 458752, 0, 196612, 458772, 0, 196612, 524288, 0, 196612, 524308, 0, 196612, 589824, 0, 196612, 589844, 0, 196612, 655360, 0, 196612, 655380, 0, 196612, 720896, 0, 262144, 720897, 0, 65538, 720898, 0, 65538, 720899, 0, 65538, 720900, 0, 65538, 720901, 0, 65538, 720902, 0, 65538, 720903, 0, 65538, 720904, 0, 65538, 720905, 0, 65538, 720906, 0, 65538, 720907, 0, 65538, 720908, 0, 65538, 720909, 0, 65538, 720910, 0, 65538, 720911, 0, 65538, 720912, 0, 65538, 720913, 0, 65538, 720914, 0, 65538, 720915, 0, 65538, 720916, 0, 262147 )
 
 [node name="VictoryListener" parent="." instance=ExtResource( 7 )]
-next_scene = ExtResource( 9 )
 
 [node name="DialogWindow" parent="." instance=ExtResource( 8 )]
-title = "Simulation 2"
-text = "More complicated zero-fuel maneuvers require the use of auxiliary systems. Your tractor beam is powered from a different reserve than your engines.
+title = "Simulation 3"
+text = "Your inertial manipulators, colloquially referred to as \"space brakes\", are another useful auxiliary system in a zero-fuel environment. They cannot stop your vessel, but they can make it difficult to move temporarily.
 
-Press [SPACE] to activate your tractor beam."
+Press [Q] to activate the green vessel's space brakes.
+
+Press [W] to activate the blue vessel's space brakes."
 
 [connection signal="entered_goal" from="GreenGoal" to="VictoryListener" method="_on_GreenGoal_entered_goal"]
 [connection signal="entered_goal" from="BlueGoal" to="VictoryListener" method="_on_BlueGoal_entered_goal"]
-[connection signal="tree_exiting" from="DialogWindow" to="GreenShip" method="enable_input"]
-[connection signal="tree_exiting" from="DialogWindow" to="BlueShip" method="enable_input"]
 [connection signal="tree_exiting" from="DialogWindow" to="TractorBeam" method="enable_input"]
+[connection signal="tree_exiting" from="DialogWindow" to="BlueShip" method="enable_input"]
+[connection signal="tree_exiting" from="DialogWindow" to="GreenShip" method="enable_input"]
 
 [editable path="GreenGoal"]
 [editable path="BlueGoal"]
