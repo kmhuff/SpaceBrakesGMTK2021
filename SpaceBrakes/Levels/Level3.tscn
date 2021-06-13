@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Components/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/playerShip3_blue.png" type="Texture" id=2]
@@ -12,52 +12,6 @@
 [ext_resource path="res://Components/background.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/Level4.tscn" type="PackedScene" id=11]
 
-[sub_resource type="RectangleShape2D" id=1]
-resource_local_to_scene = true
-extents = Vector2( 64, 160 )
-
-[sub_resource type="Shader" id=2]
-resource_local_to_scene = true
-code = "shader_type canvas_item;
-
-uniform float opacity = 1.0;
-uniform float whiteness = 0.0;
-
-void fragment() {
-	vec4 previous_color = COLOR;
-	vec4 new_color = vec4(previous_color.rgb, opacity);
-	COLOR = mix(new_color, vec4(1.0, 1.0, 1.0, opacity), whiteness);
-}"
-
-[sub_resource type="ShaderMaterial" id=3]
-resource_local_to_scene = true
-shader = SubResource( 2 )
-shader_param/opacity = 1.0
-shader_param/whiteness = 0.146949
-
-[sub_resource type="RectangleShape2D" id=4]
-resource_local_to_scene = true
-extents = Vector2( 64, 160 )
-
-[sub_resource type="Shader" id=5]
-resource_local_to_scene = true
-code = "shader_type canvas_item;
-
-uniform float opacity = 1.0;
-uniform float whiteness = 0.0;
-
-void fragment() {
-	vec4 previous_color = COLOR;
-	vec4 new_color = vec4(previous_color.rgb, opacity);
-	COLOR = mix(new_color, vec4(1.0, 1.0, 1.0, opacity), whiteness);
-}"
-
-[sub_resource type="ShaderMaterial" id=6]
-resource_local_to_scene = true
-shader = SubResource( 5 )
-shader_param/opacity = 1.0
-shader_param/whiteness = 0.146949
-
 [node name="Level3" type="Node2D"]
 
 [node name="background" parent="." instance=ExtResource( 10 )]
@@ -66,10 +20,10 @@ shader_param/whiteness = 0.146949
 position = Vector2( 1216, 544 )
 
 [node name="CollisionShape2D" parent="GreenGoal" index="0"]
-shape = SubResource( 1 )
+shape = null
 
 [node name="ColorRect" parent="GreenGoal" index="1"]
-material = SubResource( 3 )
+material = null
 margin_left = -64.0
 margin_top = -160.0
 margin_right = 64.0
@@ -80,10 +34,10 @@ position = Vector2( 1216, 224 )
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="BlueGoal" index="0"]
-shape = SubResource( 4 )
+shape = null
 
 [node name="ColorRect" parent="BlueGoal" index="1"]
-material = SubResource( 6 )
+material = null
 margin_left = -64.0
 margin_top = -160.0
 margin_right = 64.0
@@ -130,7 +84,7 @@ next_scene = ExtResource( 11 )
 
 [node name="DialogWindow" parent="." instance=ExtResource( 8 )]
 title = "Simulation 3"
-text = "Your inertial manipulators, colloquially referred to as \"space brakes\", are another useful auxiliary system in a zero-fuel environment. They cannot stop your vessel, but they can make it difficult to move temporarily.
+text = "Your inertial manipulators, colloquially referred to as \"space brakes,\" are another useful auxiliary system in a zero-fuel environment. They cannot stop your vessel, but they can make it difficult to move temporarily.
 
 Press [Q] to activate the green vessel's space brakes.
 
