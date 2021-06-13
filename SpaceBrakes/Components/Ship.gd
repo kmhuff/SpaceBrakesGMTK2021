@@ -11,6 +11,8 @@ export var brake_input = "green_space_brakes"
 var tractor_force_direction = Vector2.ZERO
 var tractor_force_magnitude = 0
 
+var old_velocity_magnitude = 0
+
 var braking = false
 var in_goal = false
 var input_enabled = false
@@ -36,6 +38,7 @@ func _integrate_forces(state):
 		$BrakeSound.play()
 		shield_sprite.visible = true
 		mass = mass * BRAKE_MAG
+		old_velocity_magnitude = state.linear_velocity.length()
 		state.linear_velocity = state.linear_velocity / BRAKE_MAG
 		braking = true
 	
@@ -48,7 +51,7 @@ func _integrate_forces(state):
 	if Input.is_action_just_released(brake_input) and braking and input_enabled:
 		shield_sprite.visible = false
 		mass = mass / BRAKE_MAG
-		state.linear_velocity = state.linear_velocity * BRAKE_MAG
+		state.linear_velocity = state.linear_velocity.normalized() * old_velocity_magnitude
 		braking = false
 
 
