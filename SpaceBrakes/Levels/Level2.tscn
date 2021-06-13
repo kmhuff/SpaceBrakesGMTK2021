@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Components/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/playerShip3_blue.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Components/GoalArea.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Components/VictoryListener.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Components/DialogWindow.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Components/background.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Shader" id=1]
 resource_local_to_scene = true
@@ -48,6 +49,8 @@ shader_param/opacity = 1.0
 shader_param/whiteness = 0.146949
 
 [node name="Level1" type="Node2D"]
+
+[node name="background" parent="." instance=ExtResource( 9 )]
 
 [node name="GreenGoal" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1216, 544 )
@@ -106,9 +109,9 @@ Press [SPACE] to activate your tractor beam."
 
 [connection signal="entered_goal" from="GreenGoal" to="VictoryListener" method="_on_GreenGoal_entered_goal"]
 [connection signal="entered_goal" from="BlueGoal" to="VictoryListener" method="_on_BlueGoal_entered_goal"]
-[connection signal="tree_exiting" from="DialogWindow" to="TractorBeam" method="enable_input"]
-[connection signal="tree_exiting" from="DialogWindow" to="BlueShip" method="enable_input"]
 [connection signal="tree_exiting" from="DialogWindow" to="GreenShip" method="enable_input"]
+[connection signal="tree_exiting" from="DialogWindow" to="BlueShip" method="enable_input"]
+[connection signal="tree_exiting" from="DialogWindow" to="TractorBeam" method="enable_input"]
 
 [editable path="GreenGoal"]
 [editable path="BlueGoal"]
