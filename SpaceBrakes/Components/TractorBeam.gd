@@ -1,7 +1,7 @@
 extends Node2D
 
 
-const BEAM_FORCE = 10000
+const BEAM_FORCE = 20000
 
 export (NodePath) var ship1_path
 export (NodePath) var ship2_path
