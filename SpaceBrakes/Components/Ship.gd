@@ -15,6 +15,7 @@ var braking = false
 var in_goal = false
 var input_enabled = false
 var dying = false
+var winning = false
 
 onready var sprite = $Sprite
 onready var shield_sprite = $ShieldSprite
@@ -52,11 +53,12 @@ func _integrate_forces(state):
 
 
 func _on_Ship_body_entered(_body):
-	$DeathSound.play()
-	dying = true
-	yield(get_tree().create_timer(2.0), "timeout")
+	if not winning:
+		$DeathSound.play()
+		dying = true
+		yield(get_tree().create_timer(2.0), "timeout")
 # warning-ignore:return_value_discarded
-	get_tree().reload_current_scene()
+		get_tree().reload_current_scene()
 
 
 func set_tractor_force(direction, magnitude):
@@ -77,3 +79,6 @@ func enable_input():
 	apply_central_impulse(Vector2(initial_speed * cos(deg2rad(initial_angle_deg)), 
 			initial_speed * sin(deg2rad(initial_angle_deg))))
 
+
+func win():
+	winning = true
